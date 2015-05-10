@@ -54,21 +54,21 @@ stop() {
 
     echo -n $"Stopping $PROJECT_NAME: "
 
-	killproc -p "$PIDFILE" -d $KILL_WAIT_SEC "$PROJECT_NAME"
+    killproc -p "$PIDFILE" -d $KILL_WAIT_SEC "$PROJECT_NAME"
     RETVAL=$?
     echo
 }
 
 status() {
     if [ -f "$PIDFILE" ]; then 
-	    pid=`cat "$PIDFILE"`
-	    if checkpid $pid; then
-	        echo "$PROJECT_NAME (pid $pid) is running..."
+        pid=`cat "$PIDFILE"`
+        if checkpid $pid; then
+            echo "$PROJECT_NAME (pid $pid) is running..."
             return 0
-	    else
-        	echo "$PROJECT_NAME is dead and pid file ($PIDFILE) exists"
+        else
+            echo "$PROJECT_NAME is dead and pid file ($PIDFILE) exists"
             return 2
-	    fi
+        fi
     fi
     echo "$PROJECT_NAME is stopped"
     return 3
