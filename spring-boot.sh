@@ -71,7 +71,7 @@ status() {
 	    fi
     fi
     echo "$PROJECT_NAME is stopped"
-    return 2
+    return 3
 }
 
 # See how we were called.
